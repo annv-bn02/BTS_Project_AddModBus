@@ -1,0 +1,70 @@
+---
+:source:
+  :path: test
+  :file: test_bts_get_message.c
+:successes:
+- :test: test_BTS_Get_Message_Control1_Device_Lamp
+  :line: 14
+  :message: ''
+  :unity_test_time: 0
+- :test: test_BTS_Get_Message_Control1_Device_Fan
+  :line: 48
+  :message: ''
+  :unity_test_time: 0
+- :test: test_BTS_Get_Message_Control1_Device_Conditioner
+  :line: 79
+  :message: ''
+  :unity_test_time: 0
+- :test: test_BTS_Get_Message_Control2_Device_Lamp
+  :line: 109
+  :message: ''
+  :unity_test_time: 0
+- :test: test_BTS_Get_Message_Control2_Device_Fan
+  :line: 140
+  :message: ''
+  :unity_test_time: 0
+- :test: test_BTS_Get_Message_Control2_Device_Conditioner
+  :line: 171
+  :message: ''
+  :unity_test_time: 0
+:failures: []
+:ignores: []
+:counts:
+  :total: 6
+  :passed: 6
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''
+- ''
+- "--------------------(Start TEST bts_get_message)--------------------"
+- ''
+- ''
+- "--------------------(Start Get)--------------------"
+- '55 aa 03 00 04 00 03 00 8e f1 '
+- "--------------------(Get Done)--------------------"
+- ''
+- "--------------------(Start Get)--------------------"
+- '55 aa 03 00 04 00 02 00 8f 61 '
+- "--------------------(Get Done)--------------------"
+- ''
+- "--------------------(Start Get)--------------------"
+- '55 aa 03 00 04 00 01 00 8f 91 '
+- "--------------------(Get Done)--------------------"
+- ''
+- "--------------------(Start Get)--------------------"
+- '55 aa 03 00 04 00 03 ff ce b1 '
+- "--------------------(Get Done)--------------------"
+- ''
+- "--------------------(Start Get)--------------------"
+- '55 aa 03 00 04 00 02 ff cf 21 '
+- "--------------------(Get Done)--------------------"
+- ''
+- "--------------------(Start Get)--------------------"
+- '55 aa 03 00 04 00 01 ff cf d1 '
+- "--------------------(Get Done)--------------------"
+- ''
+- ''
+- "--------------------(Start END bts_get_message)--------------------"
+- ''
+:time: 0.01235649999944144

@@ -1,0 +1,184 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.36.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: a b, d, LIC=9WSKC-7W9S8-SBKEJ-U20M0-X6RJ2-XJQLI
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.36.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.36.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+F:\Project\1.BTS_Project\gd32\1.BTS_Project_Keil\MDK\gpio.uvprojx
+Project File Date:  03/07/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling bts_task_io.c...
+linking...
+Program Size: Code=24814 RO-data=766 RW-data=396 ZI-data=14116  
+FromELF: creating hex file...
+".\Objects\gpio.axf" - 0 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: RTOS2 Version: 2.1.3
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.10.5.1.pack
+                ARM.CMSIS-FreeRTOS.10.5.1
+                Bundle of FreeRTOS for Cortex-M and Cortex-A
+   * Component: Config Variant: CMSIS RTOS2 Version: 10.5.1
+   * Component: Core Variant: Cortex-M Version: 10.5.1
+   * Component: Coroutines Version: 10.5.1
+   * Component: Event Groups Version: 10.5.1
+   * Component: Heap Variant: Heap_4 Version: 10.5.1
+   * Component: Message Buffer Version: 10.5.1
+   * Component: Stream Buffer Version: 10.5.1
+   * Component: Timers Version: 10.5.1
+   * Component: FreeRTOS Variant: Cortex-M Version: 10.5.1
+
+Package Vendor: GigaDevice
+                http://gd32mcu.com/data/documents/pack/GigaDevice.GD32F30x_DFP.2.1.0.pack
+                GigaDevice.GD32F30x_DFP.2.1.0
+                GigaDevice GD32F30x Series Device Support and Examples
+   * Component: GD32F30x Version: 2.1.0
+   * Component: ADC Version: 2.1.0
+   * Component: DMA Version: 2.1.0
+   * Component: EXTI Version: 2.1.0
+   * Component: GPIO Version: 2.1.0
+   * Component: MISC Version: 2.1.0
+   * Component: PMU Version: 2.1.0
+   * Component: RCU Version: 2.1.0
+   * Component: USART Version: 2.1.0
+   * Component: GD32F30x_libopt Version: 2.1.0
+   * Component: Startup Version: 2.1.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\RTOS
+  .\RTE\_Target_1
+  C:\Users\nvan0\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\CMSIS\RTOS2\FreeRTOS\Include
+  C:\Users\nvan0\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include
+  C:\Users\nvan0\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\portable\RVDS\ARM_CM4F
+  C:\Users\nvan0\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include
+  C:\Users\nvan0\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\RTOS2\Include
+  C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc
+  C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Include
+  C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Template
+  C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Utilities
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ::CMSIS:RTOS2:2.1.3 (API)
+      Include file:  CMSIS\RTOS2\Include\cmsis_os2.h
+
+   * Component: ARM.FreeRTOS::RTOS:Config:CMSIS RTOS2:10.5.1
+      Include file:  CMSIS\RTOS2\FreeRTOS\Config\ARMCM\FreeRTOSConfig.h
+
+   * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:10.5.1
+      Include file:  Source\include\FreeRTOS.h
+      Include file:  Source\include\semphr.h
+      Source file:   Source\list.c
+      Include file:  Source\include\task.h
+      Include file:  Source\include\queue.h
+      Source file:   Source\queue.c
+      Source file:   Source\tasks.c
+      Source file:   Source\portable\RVDS\ARM_CM4F\port.c
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\freertos_evr.c
+
+   * Component: ARM.FreeRTOS::RTOS:Coroutines:10.5.1
+      Source file:   Source\croutine.c
+      Include file:  Source\include\croutine.h
+
+   * Component: ARM.FreeRTOS::RTOS:Event Groups:10.5.1
+      Include file:  Source\include\event_groups.h
+      Source file:   Source\event_groups.c
+
+   * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:10.5.1
+      Source file:   Source\portable\MemMang\heap_4.c
+
+   * Component: ARM.FreeRTOS::RTOS:Message Buffer:10.5.1
+      Include file:  Source\include\message_buffer.h
+      Source file:   Source\stream_buffer.c
+
+   * Component: ARM.FreeRTOS::RTOS:Stream Buffer:10.5.1
+      Source file:   Source\stream_buffer.c
+      Include file:  Source\include\stream_buffer.h
+
+   * Component: ARM.FreeRTOS::RTOS:Timers:10.5.1
+      Source file:   Source\timers.c
+      Include file:  Source\include\timers.h
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+
+   * Component: ARM::CMSIS:RTOS2:FreeRTOS:Cortex-M:10.5.1
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\os_systick.c
+      Include file:  CMSIS\RTOS2\FreeRTOS\Include\freertos_mpool.h
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\ARM\clib_arm.c
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\cmsis_os2.c
+
+   * Component: GigaDevice::Device:EVAL:GD32F30x:2.1.0
+      Include file:  Device\Utilities\gd32f30x_eval.h
+      Source file:   Device\Utilities\gd32f30x_eval.c
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:ADC:2.1.0
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_adc.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_adc.h
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:DMA:2.1.0
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_dma.h
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_dma.c
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:EXTI:2.1.0
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_exti.h
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_exti.c
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:GPIO:2.1.0
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_gpio.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_gpio.h
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:MISC:2.1.0
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_misc.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_misc.h
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:PMU:2.1.0
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_pmu.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_pmu.h
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:RCU:2.1.0
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_rcu.h
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_rcu.c
+
+   * Component: GigaDevice::Device:GD32F30x_StdPeripherals:USART:2.1.0
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_usart.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_usart.h
+
+   * Component: GigaDevice::Device:GD32F30x_libopt:2.1.0
+      Include file:  Device\Template\gd32f30x_libopt.h
+
+   * Component: GigaDevice::Device:Startup:2.1.0
+      Source file:   Device\Source\system_gd32f30x.c
+      Include file:  Device\Include\gd32f30x.h
+      Source file:   Device\Source\ARM\startup_gd32f30x_hd.s
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
