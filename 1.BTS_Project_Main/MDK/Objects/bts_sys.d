@@ -51,8 +51,6 @@
 .\objects\bts_sys.o: ..\USER\bts_mutex_define.h
 .\objects\bts_sys.o: ..\USER\bts_queue_define.h
 .\objects\bts_sys.o: ..\USER\bts_convert.h
-.\objects\bts_sys.o: ..\USER\bts_frame_message.h
-.\objects\bts_sys.o: ..\USER\bts_get_message.h
 .\objects\bts_sys.o: ..\USER\bts_config_gpio.h
 .\objects\bts_sys.o: ..\USER\bts_automatic_control.h
 .\objects\bts_sys.o: ..\USER\bts_device.h
@@ -61,4 +59,5 @@
 .\objects\bts_sys.o: ..\USER\bts_sensor_door.h
 .\objects\bts_sys.o: ..\USER\bts_sensor_ntc.h
 .\objects\bts_sys.o: ..\USER\bts_sensor_water.h
+.\objects\bts_sys.o: ..\USER\bts_modbus_slave.h
 .\objects\bts_sys.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

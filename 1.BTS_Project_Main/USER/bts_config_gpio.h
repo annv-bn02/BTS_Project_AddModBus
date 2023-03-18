@@ -54,8 +54,8 @@ typedef struct
  */
 typedef struct
 {
-	uint8_t on;
-	uint8_t off;
+	bit_status on;
+	bit_status off;
 }define_status_device_t;
 
 extern define_GpioPin_t gpio_pin_sensor[SIZE_LIST_SENSOR];

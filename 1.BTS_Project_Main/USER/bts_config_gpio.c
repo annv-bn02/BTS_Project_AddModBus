@@ -8,13 +8,12 @@
  */
 define_GpioPin_t gpio_pin_sensor[SIZE_LIST_SENSOR]=
 {
-	//sjua thanh full down
 	{GPIOA, GPIO_MODE_AIN,    GPIO_OSPEED_MAX,   GPIO_PIN_0, ADC_CHANNEL_0,  "NTC1 Pin"},
 	{GPIOA, GPIO_MODE_AIN,    GPIO_OSPEED_MAX,   GPIO_PIN_1, ADC_CHANNEL_1,  "NTC2 Pin"},	
-	{GPIOA, GPIO_MODE_IPU,    GPIO_OSPEED_50MHZ, GPIO_PIN_14, NOT_USE_ADC,  "Door Pin"},
+	{GPIOA, GPIO_MODE_IPD,    GPIO_OSPEED_50MHZ, GPIO_PIN_14, NOT_USE_ADC,  "Door Pin"},
 	{GPIOC, GPIO_MODE_IPD,    GPIO_OSPEED_50MHZ, GPIO_PIN_4, NOT_USE_ADC, "Smoke Pin"},
-	{GPIOA, GPIO_MODE_IPU,    GPIO_OSPEED_50MHZ, GPIO_PIN_15, NOT_USE_ADC, "Water Pin"},
-	{GPIOC, GPIO_MODE_IPU,    GPIO_OSPEED_50MHZ, GPIO_PIN_10, NOT_USE_ADC, "AirCondition status Pin"},
+	{GPIOA, GPIO_MODE_IPD,    GPIO_OSPEED_50MHZ, GPIO_PIN_15, NOT_USE_ADC, "Water Pin"},
+	{GPIOC, GPIO_MODE_IPD,    GPIO_OSPEED_50MHZ, GPIO_PIN_10, NOT_USE_ADC, "AirCondition status Pin"},
 };
 
 /**
@@ -35,9 +34,9 @@ define_GpioPin_t gpio_pin_device[SIZE_LIST_DEVICE]=
  */
 define_status_device_t device_status[SIZE_LIST_DEVICE] =
 {
-	{0, 1},
-	{0, 1},
-	{0, 1},
+	{RESET, SET},
+	{RESET, SET},
+	{RESET, SET},
 };
 
 /**

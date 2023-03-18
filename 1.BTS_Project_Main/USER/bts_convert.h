@@ -5,8 +5,7 @@
     extern "C" {
 #endif
 
-#include<stdio.h>
-#include<stdint.h>
+#include "bts_sys.h"
 
 /**
  * @brief union convert float <-> uint8_t array
@@ -17,6 +16,16 @@ typedef union
 	float data_float;
 	uint8_t bytes[4];	
 } data_format_float_bytes;
+
+/**
+ * @brief union convert float <-> uint16_t array
+ * 
+ */
+typedef union 
+{
+	float data_float;
+	uint16_t uint16[2];	
+} data_format_float_Uint16;
 
 /**
  * @brief union convert int <-> uint8_t array
@@ -42,6 +51,10 @@ typedef union
 uint8_t* Bts_Convert_From_Float_To_Bytes(float data);
 
 float Bts_Convert_From_Bytes_To_Float(uint8_t data1, uint8_t data2, uint8_t data3, uint8_t data4);
+
+uint16_t* Bts_Convert_From_Float_To_Uint16(float data);
+
+float Bts_Convert_From_Uint16_To_Float(uint16_t data1, uint16_t data2);
 
 uint8_t* Bts_Convert_From_Int_To_Bytes(int data);
 

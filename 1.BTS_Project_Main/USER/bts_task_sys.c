@@ -21,6 +21,8 @@ void BTS_RTOS_Task_SYS(void *p)
 		GetEventUpdate_IoToSys(event);
 		GetEventControl_IoToSys(event);
 		GetEventControl_UartToSys(event);
+		uartDataHandler();
+		Modbus_Counter();
 		vTaskDelay(TIME_DELAY_TASK_SYS/portTICK_RATE_MS);
 	}
 	

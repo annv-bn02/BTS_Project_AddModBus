@@ -98,12 +98,18 @@ uint8_t* SmartBTS_USART3_Get_Array_Data(void)
 
 void UART3_IRQHandler(void) 
 {
-	uint8_t temp_data;
-	
-	if (RESET != usart_interrupt_flag_get(UART3, USART_INT_FLAG_RBNE)) 
+	uint8_t tempdata;
+	if(RESET != usart_interrupt_flag_get(UART3, USART_INT_FLAG_RBNE))
 	{
-		temp_data = usart_data_receive(UART3);
-		BTS_Get_Message(temp_data, array_out);
+		tempdata = usart_data_receive(UART3);
+		mobus_rx_interrupt_flag = SET;
+		modbus_data_receive[bts_modbus_data_counter++] = tempdata;
+		if(bts_modbus_data_counter >= BUFFERSIZE)
+		{
+			bts_modbus_data_counter  = 0;
+		}
+
+		modbus_uart_time_counter = 0;
 	}
 }
 

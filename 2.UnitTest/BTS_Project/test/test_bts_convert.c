@@ -67,6 +67,36 @@ void test_BTS_Convert_Uint16_To_Bytes(void)
     printf("\n----------------Convert Done--------------\n");
 }
 
+void test_BTS_Convert_Float_To_Uint16(void)
+{
+    float data_in = 121233.5;
+    uint16_t data_test[2] = {0xc8c0, 0x47ec};
+    printf("\n-----------Convert Float To Bytes--------\n");
+    uint16_t *data_out = Bts_Convert_From_Float_To_Uint16(data_in);
+    for(int i = 0; i < 2; i++)
+    {
+        printf("%x ", data_out[i]);
+    }
+    printf("\n----------------Convert Done--------------\n");
+    for(int i = 0; i < 2; i++)
+    {
+        TEST_ASSERT_EQUAL_UINT16(data_test[i], data_out[i]);
+    }
+    printf("Data convert: ");
+
+}
+
+void test_BTS_Convert_Uint16_To_Float(void)
+{
+    float data_test = 121233.5;
+    uint16_t data_in[2] = {0xc8c0, 0x47ec};
+    printf("\n-----------Convert Bytes To Float--------\n");
+    float data_out = Bts_Convert_From_Uint16_To_Float(data_in[0], data_in[1]);
+    TEST_ASSERT_EQUAL_FLOAT(data_test, data_out);
+    printf("Data convert: %f ", data_out);
+    printf("\n----------------Convert Done--------------\n");
+}
+
 void test_BTS_Convert_Bytes_To_Float(void)
 {
     float data_test = 1.67;

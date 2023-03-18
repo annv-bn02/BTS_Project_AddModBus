@@ -15,23 +15,31 @@
   :line: 52
   :message: ''
   :unity_test_time: 0
-- :test: test_BTS_Convert_Bytes_To_Float
+- :test: test_BTS_Convert_Float_To_Uint16
   :line: 70
   :message: ''
   :unity_test_time: 0
+- :test: test_BTS_Convert_Uint16_To_Float
+  :line: 89
+  :message: ''
+  :unity_test_time: 0
+- :test: test_BTS_Convert_Bytes_To_Float
+  :line: 100
+  :message: ''
+  :unity_test_time: 0
 - :test: test_BTS_Convert_Bytes_To_Int
-  :line: 81
+  :line: 111
   :message: ''
   :unity_test_time: 0
 - :test: test_BTS_Convert_Bytes_To_Uint16
-  :line: 92
+  :line: 122
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 8
+  :passed: 8
   :failed: 0
   :ignored: 0
 :stdout:
@@ -52,6 +60,15 @@
 - 'Data convert: 42 2 '
 - "----------------Convert Done--------------"
 - ''
+- "-----------Convert Float To Bytes--------"
+- 'c8c0 47ec '
+- "----------------Convert Done--------------"
+- 'Data convert: '
+- ''
+- "-----------Convert Bytes To Float--------"
+- 'Data convert: 121233.500000 '
+- "----------------Convert Done--------------"
+- ''
 - "-----------Convert Bytes To Float--------"
 - 'Data convert: 1.670000 '
 - "----------------Convert Done--------------"
@@ -67,4 +84,4 @@
 - ''
 - "--------------------(End TEST bts_convert)--------------------"
 - ''
-:time: 0.009679599999799393
+:time: 0.01857880000000023

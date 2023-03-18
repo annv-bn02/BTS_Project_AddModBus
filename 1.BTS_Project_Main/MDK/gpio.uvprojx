@@ -404,16 +404,6 @@
               <FilePath>..\USER\bts_convert.c</FilePath>
             </File>
             <File>
-              <FileName>bts_frame_message.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\bts_frame_message.c</FilePath>
-            </File>
-            <File>
-              <FileName>bts_get_message.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\USER\bts_get_message.c</FilePath>
-            </File>
-            <File>
               <FileName>bts_sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\bts_sys.c</FilePath>
@@ -437,6 +427,11 @@
               <FileName>bts_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\bts_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bts_modbus_slave.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\bts_modbus_slave.c</FilePath>
             </File>
             <File>
               <FileName>bts_uart3.c</FileName>
@@ -477,16 +472,6 @@
               <FileName>bts_event_define.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\bts_event_define.h</FilePath>
-            </File>
-            <File>
-              <FileName>bts_frame_message.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\USER\bts_frame_message.h</FilePath>
-            </File>
-            <File>
-              <FileName>bts_get_message.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\USER\bts_get_message.h</FilePath>
             </File>
             <File>
               <FileName>bts_mutex_define.h</FileName>
@@ -866,5 +851,14 @@
       </file>
     </files>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>gpio</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
