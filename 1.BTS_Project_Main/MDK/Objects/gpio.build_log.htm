@@ -22,12 +22,12 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 F:\Project\1.BTS_Project\3.BTS_Project_AddModBus\1.BTS_Project_Main\MDK\gpio.uvprojx
-Project File Date:  03/18/2023
+Project File Date:  03/22/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling bts_task_msg_transmission.c...
+compiling bts_modbus_slave.c...
 linking...
 Program Size: Code=25046 RO-data=774 RW-data=408 ZI-data=14360  
 FromELF: creating hex file...
@@ -94,14 +94,14 @@ Package Vendor: GigaDevice
       Include file:  CMSIS\RTOS2\FreeRTOS\Config\ARMCM\FreeRTOSConfig.h
 
    * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:10.5.1
-      Source file:   Source\portable\RVDS\ARM_CM4F\port.c
-      Include file:  Source\include\FreeRTOS.h
       Include file:  Source\include\queue.h
-      Include file:  Source\include\semphr.h
       Include file:  Source\include\task.h
       Source file:   Source\list.c
       Source file:   Source\queue.c
+      Include file:  Source\include\FreeRTOS.h
       Source file:   Source\tasks.c
+      Include file:  Source\include\semphr.h
+      Source file:   Source\portable\RVDS\ARM_CM4F\port.c
       Source file:   CMSIS\RTOS2\FreeRTOS\Source\freertos_evr.c
 
    * Component: ARM.FreeRTOS::RTOS:Coroutines:10.5.1
@@ -120,56 +120,56 @@ Package Vendor: GigaDevice
       Source file:   Source\stream_buffer.c
 
    * Component: ARM.FreeRTOS::RTOS:Stream Buffer:10.5.1
-      Include file:  Source\include\stream_buffer.h
       Source file:   Source\stream_buffer.c
+      Include file:  Source\include\stream_buffer.h
 
    * Component: ARM.FreeRTOS::RTOS:Timers:10.5.1
-      Include file:  Source\include\timers.h
       Source file:   Source\timers.c
+      Include file:  Source\include\timers.h
 
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: ARM::CMSIS:RTOS2:FreeRTOS:Cortex-M:10.5.1
       Include file:  CMSIS\RTOS2\FreeRTOS\Include\freertos_mpool.h
       Source file:   CMSIS\RTOS2\FreeRTOS\Source\cmsis_os2.c
-      Source file:   CMSIS\RTOS2\FreeRTOS\Source\ARM\clib_arm.c
       Source file:   CMSIS\RTOS2\FreeRTOS\Source\os_systick.c
+      Source file:   CMSIS\RTOS2\FreeRTOS\Source\ARM\clib_arm.c
 
    * Component: GigaDevice::Device:EVAL:GD32F30x:2.1.0
       Include file:  Device\Utilities\gd32f30x_eval.h
       Source file:   Device\Utilities\gd32f30x_eval.c
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:ADC:2.1.0
-      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_adc.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_adc.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_adc.h
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:DMA:2.1.0
-      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_dma.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_dma.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_dma.h
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:EXTI:2.1.0
       Include file:  Device\Firmware\Peripherals\inc\gd32f30x_exti.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_exti.c
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:GPIO:2.1.0
-      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_gpio.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_gpio.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_gpio.h
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:MISC:2.1.0
-      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_misc.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_misc.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_misc.h
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:PMU:2.1.0
-      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_pmu.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_pmu.c
+      Include file:  Device\Firmware\Peripherals\inc\gd32f30x_pmu.h
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:RCU:2.1.0
       Include file:  Device\Firmware\Peripherals\inc\gd32f30x_rcu.h
       Source file:   Device\Firmware\Peripherals\src\gd32f30x_rcu.c
 
    * Component: GigaDevice::Device:GD32F30x_StdPeripherals:USART:2.1.0
-      Source file:   Device\Firmware\Peripherals\src\gd32f30x_usart.c
       Include file:  Device\Firmware\Peripherals\inc\gd32f30x_usart.h
+      Source file:   Device\Firmware\Peripherals\src\gd32f30x_usart.c
 
    * Component: GigaDevice::Device:GD32F30x_libopt:2.1.0
       Include file:  Device\Template\gd32f30x_libopt.h
@@ -178,7 +178,7 @@ Package Vendor: GigaDevice
       Source file:   Device\Source\system_gd32f30x.c
       Include file:  Device\Include\gd32f30x.h
       Source file:   Device\Source\ARM\startup_gd32f30x_hd.s
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
