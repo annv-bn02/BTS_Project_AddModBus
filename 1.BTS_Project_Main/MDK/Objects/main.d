@@ -14,6 +14,7 @@
 .\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Include\gd32f30x.h
 .\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc\gd32f30x_dma.h
 .\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc\gd32f30x_exti.h
+.\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc\gd32f30x_fmc.h
 .\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc\gd32f30x_gpio.h
 .\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc\gd32f30x_misc.h
 .\objects\main.o: C:\Users\nvan0\AppData\Local\Arm\Packs\GigaDevice\GD32F30x_DFP\2.1.0\Device\Firmware\Peripherals\inc\gd32f30x_pmu.h
@@ -47,6 +48,8 @@
 .\objects\main.o: ..\USER\bts_task_sys.h
 .\objects\main.o: ..\USER\bts_task_msg_transmission.h
 .\objects\main.o: ..\USER\bts_adc.h
+.\objects\main.o: ..\USER\bts_flash.h
+.\objects\main.o: ..\USER\bts_modbus_slave.h
 .\objects\main.o: ..\USER\bts_event_define.h
 .\objects\main.o: ..\USER\bts_mutex_define.h
 .\objects\main.o: ..\USER\bts_queue_define.h
@@ -59,4 +62,3 @@
 .\objects\main.o: ..\USER\bts_sensor_door.h
 .\objects\main.o: ..\USER\bts_sensor_ntc.h
 .\objects\main.o: ..\USER\bts_sensor_water.h
-.\objects\main.o: ..\USER\bts_modbus_slave.h

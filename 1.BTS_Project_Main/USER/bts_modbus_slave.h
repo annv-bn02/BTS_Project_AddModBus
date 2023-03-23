@@ -22,6 +22,7 @@ enum
 	WriteMultipleResisters = 0x10,
 };
 
+extern uint8_t modbus_slave_id;
 
 extern uint8_t bts_modbus_data_counter;
 extern uint8_t mobus_rx_interrupt_flag;

@@ -438,6 +438,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\bts_uart3.c</FilePath>
             </File>
+            <File>
+              <FileName>bts_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\bts_flash.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -542,6 +547,11 @@
               <FileName>systick.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\systick.h</FilePath>
+            </File>
+            <File>
+              <FileName>bts_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\bts_flash.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -697,6 +707,12 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
+      <component Cclass="Device" Cgroup="GD32F30x_StdPeripherals" Csub="FMC" Cvendor="GigaDevice" Cversion="2.1.0" condition="GD32F30x STDPERIPHERALS RCU">
+        <package name="GD32F30x_DFP" schemaVersion="1.1" url="http://gd32mcu.com/data/documents/pack/" vendor="GigaDevice" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
       <component Cclass="Device" Cgroup="GD32F30x_StdPeripherals" Csub="GPIO" Cvendor="GigaDevice" Cversion="2.1.0" condition="GD32F30x STDPERIPHERALS RCU">
         <package name="GD32F30x_DFP" schemaVersion="1.1" url="http://gd32mcu.com/data/documents/pack/" vendor="GigaDevice" version="2.1.0"/>
         <targetInfos>
@@ -768,6 +784,14 @@
       <file attr="config" category="source" name="Device\Firmware\Peripherals\src\gd32f30x_exti.c" version="2.1.0">
         <instance index="0">RTE\Device\GD32F303RC\gd32f30x_exti.c</instance>
         <component Cclass="Device" Cgroup="GD32F30x_StdPeripherals" Csub="EXTI" Cvendor="GigaDevice" Cversion="2.1.0" condition="GD32F30x STDPERIPHERALS RCU"/>
+        <package name="GD32F30x_DFP" schemaVersion="1.1" url="http://gd32mcu.com/data/documents/pack/" vendor="GigaDevice" version="2.1.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="Device\Firmware\Peripherals\src\gd32f30x_fmc.c" version="2.1.0">
+        <instance index="0">RTE\Device\GD32F303RC\gd32f30x_fmc.c</instance>
+        <component Cclass="Device" Cgroup="GD32F30x_StdPeripherals" Csub="FMC" Cvendor="GigaDevice" Cversion="2.1.0" condition="GD32F30x STDPERIPHERALS RCU"/>
         <package name="GD32F30x_DFP" schemaVersion="1.1" url="http://gd32mcu.com/data/documents/pack/" vendor="GigaDevice" version="2.1.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

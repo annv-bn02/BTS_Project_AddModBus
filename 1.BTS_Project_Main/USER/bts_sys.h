@@ -9,6 +9,7 @@ extern "C"{
 #include "gd32f30x_gpio.h"
 #include "gd32f30x_eval.h"
 #include "gd32f30x_adc.h"
+#include "gd32f30x.h"
 
 #include <stdio.h>
 #include "FreeRTOS.h"
@@ -28,6 +29,8 @@ extern "C"{
 #include "bts_task_sys.h"
 #include "bts_task_msg_transmission.h"
 #include "bts_adc.h"
+#include "bts_flash.h"
+#include "bts_modbus_slave.h"
 
 #include "bts_event_define.h"
 #include "bts_mutex_define.h"
@@ -38,14 +41,13 @@ extern "C"{
 
 #include "bts_automatic_control.h"
 #include "bts_device.h"
-
 #include "bts_sensor_airconditioner.h"
 #include "bts_sensor_smoke.h"
 #include "bts_sensor_door.h"
 #include "bts_sensor_ntc.h"
 #include "bts_sensor_water.h"
 
-#include "bts_modbus_slave.h"
+
 
 extern volatile eventListValue_t EventTask;
 extern volatile mutexListValue_t MutexTask;
@@ -76,6 +78,10 @@ extern volatile queueListValue_t QueueTask;
 #define REGISTER_ADDRESS_SENSOR_END		19
 #define REGISTER_ADDRESS_DEVICE_START	20
 #define REGISTER_ADDRESS_DEVICE_END		39
+
+#define REGISTER_ADDRESS_CONTROL_DEVICE 80
+#define REGISTER_ADDRESS_SLAVE_ID		90
+
 /**
  * @brief structure of data for control device 
  * 
