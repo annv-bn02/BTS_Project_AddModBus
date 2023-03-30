@@ -48,6 +48,7 @@
 .\objects\bts_automatic_control.o: ..\USER\bts_task_io.h
 .\objects\bts_automatic_control.o: ..\USER\bts_task_sys.h
 .\objects\bts_automatic_control.o: ..\USER\bts_task_msg_transmission.h
+.\objects\bts_automatic_control.o: ..\USER\bts_task_flash.h
 .\objects\bts_automatic_control.o: ..\USER\bts_adc.h
 .\objects\bts_automatic_control.o: ..\USER\bts_flash.h
 .\objects\bts_automatic_control.o: ..\USER\bts_modbus_slave.h

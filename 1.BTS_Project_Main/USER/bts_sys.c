@@ -1,7 +1,7 @@
 #include "bts_sys.h"
 #include <stdarg.h>
 
-volatile eventListValue_t EventTask;
+volatile eventListValue_t EventTask1, EventTask2;
 volatile mutexListValue_t MutexTask;
 volatile queueListValue_t QueueTask;
 
@@ -14,19 +14,25 @@ void BTS_Sys_SendString(char *text);
  */
 void BTS_Sys_EventInit(void)
 {
-	EventTask.Sys.To_Uart.EventGroup = xEventGroupCreate();
-	EventTask.Sys.To_Uart.EventBit_FlagHasData 			= (1<<0);
-	EventTask.Sys.To_Uart.EventBit_FlagHasDataUpdate 	= (2<<0);
+	EventTask1.Sys.To_Uart.EventGroup 				 = xEventGroupCreate();
+	EventTask1.Sys.To_Uart.EventBit_FlagHasData 		 = (1<<0);
+	EventTask1.Sys.To_Uart.EventBit_FlagHasDataUpdate = (2<<0);
 	
-	EventTask.Sys.To_IO.EventGroup = xEventGroupCreate();
-	EventTask.Sys.To_IO.EventBit_FlagHasData = (1<<0);
+	EventTask1.Sys.To_IO.EventGroup 					 = xEventGroupCreate();
+	EventTask1.Sys.To_IO.EventBit_FlagHasData 		 = (1<<0);
 	
-	EventTask.Uart.To_Sys.EventGroup = xEventGroupCreate();
-	EventTask.Uart.To_Sys.EventBit_FlagHasData = (1<<0);
+	EventTask1.Uart.To_Sys.EventGroup 				 = xEventGroupCreate();
+	EventTask1.Uart.To_Sys.EventBit_FlagHasData 		 = (1<<0);
 	
-	EventTask.IO.To_Sys.EventGroup = xEventGroupCreate();
-	EventTask.IO.To_Sys.EventBit_FlagHasData 		= (1<<0);
-	EventTask.IO.To_Sys.EventBit_FlagHasDataUpdate 	= (2<<0);
+	EventTask1.IO.To_Sys.EventGroup 					 = xEventGroupCreate();
+	EventTask1.IO.To_Sys.EventBit_FlagHasData 		 = (1<<0);
+	EventTask1.IO.To_Sys.EventBit_FlagHasDataUpdate   = (2<<0);
+	
+	EventTask2.Flash.To_Sys.EventGroup 				 = xEventGroupCreate();
+	EventTask2.Flash.To_Sys.EventBit_SlaveID 			 = (1<<0);
+	
+	EventTask2.Sys.To_Uart.EventGroup 				 = xEventGroupCreate();
+	EventTask2.Sys.To_Uart.EventBit_SlaveID		 = (1<<0);
 }
 
 /**
@@ -36,8 +42,8 @@ void BTS_Sys_EventInit(void)
 void BTS_Sys_MutexInit(void)
 {
 	MutexTask.SYS.Lock_SendChar = xSemaphoreCreateMutex();
-	MutexTask.IO.Lock_Queue = xSemaphoreCreateMutex();
-	MutexTask.UART.Lock_Queue = xSemaphoreCreateMutex();
+	MutexTask.IO.Lock_Queue 	= xSemaphoreCreateMutex();
+	MutexTask.UART.Lock_Queue   = xSemaphoreCreateMutex();
 }
 
 /**
@@ -46,9 +52,9 @@ void BTS_Sys_MutexInit(void)
  */
 void BTS_Sys_QueueInit(void)
 {
-
-	QueueTask.Uart.To_Io.Queue_Device = xQueueCreate(10, sizeof(controlDeviceFrame_t));
-	QueueTask.IO.To_Uart.Queue_Device = xQueueCreate(10, sizeof(updateDeviceFrame_t));
+	QueueTask.Flash.To_Uart.Queue_Slave_Id 	= xQueueCreate(10, sizeof(flashInformation_t));
+	QueueTask.Uart.To_Io.Queue_Device 	  	= xQueueCreate(10, sizeof(controlDeviceFrame_t));
+	QueueTask.IO.To_Uart.Queue_Device 	  	= xQueueCreate(10, sizeof(updateDeviceFrame_t));
 }
 
 /**

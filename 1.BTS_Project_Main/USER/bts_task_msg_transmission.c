@@ -1,11 +1,15 @@
 #include "bts_task_msg_transmission.h"
 
+flashInformation_t flash_infor;
+uint8_t Modbus_Slave_ID(void);
 static void GetQueueDevice_IoToUart(void);
 static void GetQueueSensor_IoToUart(void);
+static void GetQueueSlaveID_FlashToUart(void);
+static void SendQueue_UartToIO(const uint8_t name, const uint8_t value);
 static void SendEventControl_UartToSys(void);
 static void GetEventUpdate_SysToUart(EventBits_t event);
 static void GetEventControl_SysToUart(EventBits_t event);
-static void SendQueue_UartToIO(const uint8_t name, const uint8_t value);
+static void GetEventSlaveID_SysToUart(EventBits_t event);
 
 #if DEBUG_DATA_SENSOR_REGISTER
 static void Debug_Data_Register_Sensor(void); 
@@ -13,7 +17,9 @@ static void Debug_Data_Register_Sensor(void);
 #if DEBUG_DATA_DEVICE_REGISTER
 static void Debug_Data_Register_Device(void);
 #endif
+
 uint32_t counter_control = 0;
+
 /**
  * @brief Transmission task funtion of RTOS system
  * 
@@ -29,6 +35,7 @@ void BTS_RTOS_Task_Msg(void *p)
 		control_data = Control_Data_Flag();
 		GetEventUpdate_SysToUart(event);
 		GetEventControl_SysToUart(event);
+		GetEventSlaveID_SysToUart(event);
 		if(control_data != 0)
 		{
 			SendEventControl_UartToSys();
@@ -37,6 +44,11 @@ void BTS_RTOS_Task_Msg(void *p)
 		}
 		vTaskDelay(TIME_DELAY_TASK_MSG/portTICK_RATE_MS);
 	}
+}
+
+uint8_t Modbus_Slave_ID(void)
+{
+	return flash_infor.data[0];
 }
 
 /**
@@ -100,56 +112,14 @@ static void GetQueueSensor_IoToUart(void)
 	xSemaphoreGive(MutexTask.UART.Lock_Queue);
 }
 
-/**
- * @brief Send event control device to sys task.
- * 
- */
-static void SendEventControl_UartToSys(void)
+static void GetQueueSlaveID_FlashToUart(void)
 {
-	xEventGroupSetBits(EventTask.Uart.To_Sys.EventGroup, EventTask.Uart.To_Sys.EventBit_FlagHasData);	
-}
-
-/**
- * @brief Get event update data of device and sensor from sys task.
- * 
- */
-static void GetEventUpdate_SysToUart(EventBits_t event)
-{
-	//If UART has event from SYS, end event progress;
-	event = xEventGroupWaitBits(EventTask.Sys.To_Uart.EventGroup, EventTask.Sys.To_Uart.EventBit_FlagHasDataUpdate, pdTRUE, pdFALSE, TIME_WAIT_EVENT_ALL);
-	if(event & EventTask.Sys.To_Uart.EventBit_FlagHasDataUpdate)
+	if(xQueueReceive(QueueTask.Flash.To_Uart.Queue_Slave_Id, (void *)&flash_infor, TIME_WAIT_QUEUE))
 	{
-#if DEBUG_ALL
-		BTS_Sys_Debug("Update\n");
-#endif	
-		GetQueueDevice_IoToUart();
-		GetQueueSensor_IoToUart();
-#if DEBUG_ALL
-		BTS_Sys_Debug("End Update\n\n");
-#endif	
+		BTS_Sys_Debug("%d\n", flash_infor.data[0]);
 	}
 }
 
-/**
- * @brief Get event control data of device and sensor from sys task.
- * 
- */
-static void GetEventControl_SysToUart(EventBits_t event)
-{
-	//If UART has event from SYS, end event progress;
-	event = xEventGroupWaitBits(EventTask.Sys.To_Uart.EventGroup, EventTask.Sys.To_Uart.EventBit_FlagHasData, pdTRUE, pdFALSE, TIME_WAIT_EVENT_ALL);
-	if(event & EventTask.Sys.To_Uart.EventBit_FlagHasData)
-	{
-#if DEBUG_ALL
-		BTS_Sys_Debug("Event Control SYSTEM to UART done\n");
-#endif
-//		GetQueueDevice_IoToUart();
-//		GetQueueSensor_IoToUart();
-#if DEBUG_ALL
-		BTS_Sys_Debug("End test\n\n");
-#endif
-	}
-}
 /**
  * @brief Send name device and value control to IO task
  * 
@@ -165,6 +135,67 @@ static void SendQueue_UartToIO(const uint8_t name, const uint8_t value)
 	xSemaphoreTake(MutexTask.UART.Lock_Queue, portMAX_DELAY);
 	xQueueSend(QueueTask.Uart.To_Io.Queue_Device, (void *)&data_frame, TIME_WAIT_QUEUE);
 	xSemaphoreGive(MutexTask.UART.Lock_Queue);
+}
+
+/**
+ * @brief Send event control device to sys task.
+ * 
+ */
+static void SendEventControl_UartToSys(void)
+{
+	xEventGroupSetBits(EventTask1.Uart.To_Sys.EventGroup, EventTask1.Uart.To_Sys.EventBit_FlagHasData);	
+}
+
+/**
+ * @brief Get event update data of device and sensor from sys task.
+ * 
+ */
+static void GetEventUpdate_SysToUart(EventBits_t event)
+{
+	//If UART has event from SYS, end event progress;
+	event = xEventGroupWaitBits(EventTask1.Sys.To_Uart.EventGroup, EventTask1.Sys.To_Uart.EventBit_FlagHasDataUpdate, pdTRUE, pdFALSE, TIME_WAIT_EVENT_ALL);
+	if(event & EventTask1.Sys.To_Uart.EventBit_FlagHasDataUpdate)
+	{
+#if DEBUG_ALL
+		BTS_Sys_Debug("Update\n");
+#endif	
+		GetQueueDevice_IoToUart();
+		GetQueueSensor_IoToUart();
+		
+#if DEBUG_ALL
+		BTS_Sys_Debug("End Update\n\n");
+#endif	
+	}
+}
+
+/**
+ * @brief Get event control data of device and sensor from sys task.
+ * 
+ */
+static void GetEventControl_SysToUart(EventBits_t event)
+{
+	//If UART has event from SYS, end event progress;
+	event = xEventGroupWaitBits(EventTask1.Sys.To_Uart.EventGroup, EventTask1.Sys.To_Uart.EventBit_FlagHasData, pdTRUE, pdFALSE, TIME_WAIT_EVENT_ALL);
+	if(event & EventTask1.Sys.To_Uart.EventBit_FlagHasData)
+	{
+#if DEBUG_ALL
+		BTS_Sys_Debug("Event Control SYSTEM to UART done\n");
+#endif
+//		GetQueueDevice_IoToUart();
+//		GetQueueSensor_IoToUart();
+#if DEBUG_ALL
+		BTS_Sys_Debug("End test\n\n");
+#endif
+	}
+}
+
+static void GetEventSlaveID_SysToUart(EventBits_t event)
+{
+	event = xEventGroupWaitBits(EventTask2.Sys.To_Uart.EventGroup, EventTask2.Sys.To_Uart.EventBit_SlaveID, pdTRUE, pdFALSE, TIME_WAIT_EVENT_ALL);
+	if(event & EventTask2.Sys.To_Uart.EventBit_SlaveID)
+	{
+		GetQueueSlaveID_FlashToUart();
+	}
 }
 
 #if DEBUG_DATA_SENSOR_REGISTER

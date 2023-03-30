@@ -15,6 +15,7 @@ typedef struct
 	EventGroupHandle_t EventGroup;
 	uint8_t EventBit_FlagHasData;
 	uint8_t EventBit_FlagHasDataUpdate;
+	uint8_t EventBit_SlaveID;
 }eventSysToUart_t;
 
 typedef struct
@@ -54,12 +55,25 @@ typedef struct
 	eventIOToSys_t To_Sys;
 }eventIOTo_t;
 
+/*-----------------------------------(EVENT LIST TASK IO TO )-----------------------------------*/
+typedef struct
+{
+	EventGroupHandle_t EventGroup;
+	uint8_t EventBit_SlaveID;
+}eventFlashToSys_t;
+
+typedef struct
+{
+	eventFlashToSys_t To_Sys;
+}eventFlashTo_t;
+
 /*-----------------------------------(EVENT LIST ALL)-----------------------------------*/
 typedef struct
 {
 	eventSysTo_t  Sys;
 	eventUartTo_t Uart;
 	eventIOTo_t IO;
+	eventFlashTo_t Flash;
 }eventListValue_t;
 
 #ifdef __cplusplus

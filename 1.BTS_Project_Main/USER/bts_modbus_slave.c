@@ -1,7 +1,5 @@
 #include "bts_modbus_slave.h"
 
-uint8_t modbus_slave_id;
-
 uint8_t bts_modbus_data_counter;
 uint8_t mobus_rx_interrupt_flag;
 uint8_t modbus_uart_time_counter;
@@ -89,17 +87,23 @@ void uartDataHandler(void)
 		CRCValue = MODBUS_CRC16(tempmodbus_data_receive, tempCounter - 2);
 		rxCRC = (tempmodbus_data_receive[tempCounter -1] << 8) | (tempmodbus_data_receive[tempCounter - 2]);
 
-		/*If the calculated CRC value and the received CRC value are equal and the Slave ID is correct, respond to the receiving data.  */
-		if(rxCRC == CRCValue && tempmodbus_data_receive[0] == modbus_slave_id)
-		{
-			transmitDataMake(&tempmodbus_data_receive[0], tempCounter);
-		}
 		/*If check the function code if 0x06(write single registere) , set control flag and send control data*/
-		if(tempmodbus_data_receive[1] == 0x06 && tempmodbus_data_receive[0] == modbus_slave_id && tempmodbus_data_receive[3] == REGISTER_ADDRESS_CONTROL_DEVICE)
+		if(tempmodbus_data_receive[1] == 0x06 && tempmodbus_data_receive[0] == Modbus_Slave_ID() && tempmodbus_data_receive[3] == REGISTER_ADDRESS_CONTROL_DEVICE)
 		{	
 			control_data = Bts_Convert_From_Bytes_To_Uint16((uint8_t)tempmodbus_data_receive[4], (uint8_t)tempmodbus_data_receive[5]);
 			control_flag = 1;
 		}
+		else if(tempmodbus_data_receive[1] == 0x06 && tempmodbus_data_receive[0] == Modbus_Slave_ID() && tempmodbus_data_receive[3] == 86)
+		{
+			NVIC_SystemReset();
+		}
+		
+		/*If the calculated CRC value and the received CRC value are equal and the Slave ID is correct, respond to the receiving data.  */
+		if(rxCRC == CRCValue && tempmodbus_data_receive[0] == Modbus_Slave_ID())
+		{
+			transmitDataMake(&tempmodbus_data_receive[0], tempCounter);
+		}
+
 	}
 }
 

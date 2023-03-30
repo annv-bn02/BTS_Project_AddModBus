@@ -47,6 +47,7 @@
 .\objects\main.o: ..\USER\bts_task_io.h
 .\objects\main.o: ..\USER\bts_task_sys.h
 .\objects\main.o: ..\USER\bts_task_msg_transmission.h
+.\objects\main.o: ..\USER\bts_task_flash.h
 .\objects\main.o: ..\USER\bts_adc.h
 .\objects\main.o: ..\USER\bts_flash.h
 .\objects\main.o: ..\USER\bts_modbus_slave.h

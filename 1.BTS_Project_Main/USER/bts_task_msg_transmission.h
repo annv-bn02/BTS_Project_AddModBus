@@ -6,6 +6,7 @@ extern "C"{
 #endif
 #include "bts_sys.h"
 
+uint8_t Modbus_Slave_ID(void);
 void BTS_RTOS_Task_Msg(void *p);
 
 #ifdef __cplusplus

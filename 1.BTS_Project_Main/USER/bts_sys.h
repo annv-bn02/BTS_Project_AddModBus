@@ -28,6 +28,7 @@ extern "C"{
 #include "bts_task_io.h"
 #include "bts_task_sys.h"
 #include "bts_task_msg_transmission.h"
+#include "bts_task_flash.h"
 #include "bts_adc.h"
 #include "bts_flash.h"
 #include "bts_modbus_slave.h"
@@ -49,7 +50,7 @@ extern "C"{
 
 
 
-extern volatile eventListValue_t EventTask;
+extern volatile eventListValue_t EventTask1, EventTask2;
 extern volatile mutexListValue_t MutexTask;
 extern volatile queueListValue_t QueueTask;
 
@@ -61,6 +62,7 @@ extern volatile queueListValue_t QueueTask;
 #define TIME_DELAY_TASK_MSG 	1
 #define TIME_DELAY_TASK_IO 		1
 #define TIME_DELAY_TASK_SYS 	1
+#define TIME_DELAY_TASK_FLASH 	1
 
 #define TIME_WAIT_EVENT_ALL		0
 #define TIME_WAIT_QUEUE			(portTickType)0
@@ -110,6 +112,10 @@ typedef struct
 	float data[DEFAULT_MAX_NUMBER_SENSOR];
 }updateSensorFrame_t;
 	
+typedef struct
+{
+	uint8_t data[20];
+}flashInformation_t;
 
 void BTS_Sys_EventInit(void);
 void BTS_Sys_Init(void);

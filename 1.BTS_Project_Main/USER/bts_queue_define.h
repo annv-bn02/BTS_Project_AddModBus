@@ -54,12 +54,36 @@ typedef struct
 	queueUartToIo_t 	To_Io;
 }queueUartTo_t;
 
+/*-----------------------------------(QUEUE LIST TASK FLASH TO )-----------------------------------*/
+typedef struct
+{
+	xQueueHandle Queue_Slave_Id;
+}queueFlashToIo_t;
+
+typedef struct
+{
+	xQueueHandle Queue_Slave_Id;
+}queueFlashToSys_t;
+
+typedef struct
+{
+	xQueueHandle Queue_Slave_Id;
+}queueFlashToUart_t;
+
+typedef struct
+{
+	queueFlashToSys_t 	To_Sys;
+	queueFlashToIo_t 	To_Io;
+	queueFlashToUart_t 	To_Uart;
+}queueFlashTo_t;
+
 /*-----------------------------------(QUEUE LIST ALL)-----------------------------------*/
 typedef struct
 {
 	queueSysTo_t  Sys;
 	queueUartTo_t Uart;
 	queueIOTo_t IO;
+	queueFlashTo_t Flash;
 }queueListValue_t;
 
 #ifdef __cplusplus

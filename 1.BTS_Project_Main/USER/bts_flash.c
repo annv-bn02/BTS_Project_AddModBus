@@ -25,7 +25,7 @@ void BTS_Flash_Erase_Pages(const uint32_t Flash_StartAddr, const uint32_t Flash_
 	fmc_lock();
 }
 
-void BTS_Flash_Write(const uint32_t FlashAddress,const uint32_t* Data ,const uint32_t DataLength)
+void BTS_Flash_Write_Word(const uint32_t FlashAddress,const uint32_t* Data ,const uint32_t DataLength)
 {
 	/* unlock the flash program/erase controller */
 	uint32_t address = FlashAddress;
@@ -35,6 +35,22 @@ void BTS_Flash_Write(const uint32_t FlashAddress,const uint32_t* Data ,const uin
 	{
 		fmc_word_program(address, Data[count_data]);
 		address += 4;
+		fmc_flag_clear(FMC_FLAG_BANK0_END);
+		fmc_flag_clear(FMC_FLAG_BANK0_WPERR);
+		fmc_flag_clear(FMC_FLAG_BANK0_PGERR);
+	}
+}
+
+void BTS_Flash_Write_HalfWord(const uint32_t FlashAddress,const uint16_t* Data ,const uint32_t DataLength)
+{
+	/* unlock the flash program/erase controller */
+	uint32_t address = FlashAddress;
+	uint32_t count_data = 0;
+	fmc_unlock();
+	for(count_data=0; count_data<DataLength; count_data++)
+	{
+		fmc_word_program(address, Data[count_data]);
+		address += 2;
 		fmc_flag_clear(FMC_FLAG_BANK0_END);
 		fmc_flag_clear(FMC_FLAG_BANK0_WPERR);
 		fmc_flag_clear(FMC_FLAG_BANK0_PGERR);

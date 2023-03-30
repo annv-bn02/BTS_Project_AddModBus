@@ -140,11 +140,12 @@ extern "C"{
 #define FMC_WRITE_START_ADDR    ((uint32_t)0x08004000U)	
 #define FMC_WRITE_END_ADDR      ((uint32_t)0x08004800U)  
 
-#define ADDR_FLASH_SLAVE_ID ((uint32_t)0x08004000U + 0x0000U)
+#define ADDR_FLASH_SLAVE_ID ((uint32_t)0x08008000)
 
 #define FMC_READ(addrx) (*(volatile uint32_t*)(uint32_t)(addrx))
 void BTS_Flash_Erase_Pages(const uint32_t Flash_StartAddr, const uint32_t Flash_EndAddr);
-void BTS_Flash_Write(const uint32_t FlashAddress,const uint32_t* Data ,const uint32_t DataLength);
+void BTS_Flash_Write_Word(const uint32_t FlashAddress,const uint32_t* Data ,const uint32_t DataLength);
+void BTS_Flash_Write_HalfWord(const uint32_t FlashAddress,const uint16_t* Data ,const uint32_t DataLength);
 uint32_t BTS_Flash_Read(const uint32_t FlashAddress);
 #ifdef __cplusplus
 }

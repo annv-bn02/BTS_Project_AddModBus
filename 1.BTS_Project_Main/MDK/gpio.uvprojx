@@ -409,6 +409,11 @@
               <FilePath>..\USER\bts_sys.c</FilePath>
             </File>
             <File>
+              <FileName>bts_task_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\bts_task_flash.c</FilePath>
+            </File>
+            <File>
               <FileName>bts_task_io.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\USER\bts_task_io.c</FilePath>
@@ -552,6 +557,11 @@
               <FileName>bts_flash.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\USER\bts_flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>bts_task_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\bts_task_flash.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -875,5 +885,14 @@
       </file>
     </files>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>gpio</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
